@@ -78,7 +78,7 @@ function getUserPic(){
                  
                 snapPath=path + "_snap.jpg";
                 infoList=[];
-                infoList.push("<div class=\"SnapMainDiv\"><div class=\"SnapImgDiv\"><img class=\"SnapImg\" src=\"" + snapPath + "\"/></div></div>");
+                infoList.push("<div class=\"SnapMainDiv\"><div class=\"SnapImgDiv\"><img class=\"SnapImg\" src=\"" + snapPath + "\" onclick=\"javascript:showPicView('" + path + "')\"/></div></div>");
 
 	        picMarker[i]=new AMap.Marker({position:[longitude,latitude]});
                 picMarker[i].setLabel({offset:new AMap.Pixel(20,20), content: infoList.join("<br/>")});

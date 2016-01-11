@@ -1,0 +1,61 @@
+ul.imglist{ 
+    margin:0 auto; 
+    width:100%; 
+    list-style:inline;
+    overflow:hidden; 
+    //overflow-x:scroll
+} 
+
+ul.imglist li{
+    float:left; 
+    display:inline; 
+    padding:0px 0.2%; 
+    width:19%
+} 
+
+ul.imglist li img{ 
+    float:left;
+    display:inline; 
+    width:100%; 
+    height:100px;
+} 
+
+ul.imglist li span{ 
+    float:left; 
+    display:inline; 
+    width:100%; 
+    height:30px; 
+    line-height:30px; 
+    background:#F6F6F6
+} 
+
+div.bar{
+    background:#eee;
+    width: 100%;
+    height: 150px;
+    position:absolute;
+    bottom:0;
+    border:2px solid #000;
+
+}
+
+div.pic_bar{
+    background:#000;
+    width: 90%;
+    height: 100px;
+    margin:0 auto;
+    overflow:hidden;
+    text-align:center;
+    //border:6px solid #000;
+
+}
+
+div.control_bar{
+    background:#aaa;
+    width: 90%;
+    height: 50px;
+    margin:0 auto;
+    overflow:hidden;
+    //border:6px solid #00f;
+
+}

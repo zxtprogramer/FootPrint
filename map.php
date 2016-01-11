@@ -1,4 +1,9 @@
 <!doctype html>
+<?php
+session_start();
+if(!isset($_SESSION['name']))header("Location: login.php");
+?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -19,8 +24,8 @@
 
 
 
-<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=605574e6236d5b46cff5ddfe4ac9f437"></script>
 <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=605574e6236d5b46cff5ddfe4ac9f437"></script>
 <script type="text/javascript" src="js/picmap.js"></script>
 
 

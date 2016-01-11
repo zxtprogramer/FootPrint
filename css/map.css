@@ -3,3 +3,19 @@ body,html,#container{
   //width: 600px;
   margin:0px
 }
+
+.SnapMainDiv{
+    height: auto;
+    width: 70px;
+}
+
+.SnapImgDiv{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.SnapImg{
+    height:auto;
+    width:auto;
+}

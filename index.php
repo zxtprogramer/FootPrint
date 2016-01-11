@@ -19,7 +19,7 @@ switch($cmd){
         if(checkPwd($name, $pwd)){
             session_start();
             $_SESSION['name']=$name;
-            header("Location: main.php");
+            header("Location: map.php");
         }
         else{
             header("Location: login.php");
@@ -28,6 +28,8 @@ switch($cmd){
  
         
         break;
-    default:break;
+    default:
+        header("Location: login.php");
+        break;
 }
 ?>

@@ -2,6 +2,8 @@ var userLong,userLat;
 var usrMarker;
 var map;
 var picMarker=new Array();
+var mouseLongitude;
+var mouseLatitude;
 
 function initMap(){
    map = new AMap.Map('container',{
@@ -107,18 +109,36 @@ function picMakerClear(){
     }
 }
 
+function _onClick(e){
+    mouseLongitude=e.lnglat.getLng();
+    mouseLatitude=e.lnglat.getLat();
+    //alert(mouseLongitude + "," + mouseLatitude);
+    //
+    pos=(mouseLongitude + "," + mouseLatitude);
+    $("#UploadIFrame").contents().find("#picPos").attr("value",pos );
+}
 
 
-function _onMoveend(e){ getPic(picFlag); }
-function _onDragend(e){ getPic(picFlag); }
-function _onZoomend(e){ getPic(picFlag); }
-function _onTouchend(e){ getPic(picFlag); }
+
+function _onMoveend(e){ 
+    getPic(picFlag); 
+}
+function _onDragend(e){
+    getPic(picFlag); 
+}
+function _onZoomend(e){
+    getPic(picFlag); 
+}
+function _onTouchend(e){
+    getPic(picFlag); 
+} 
 
 function addListener(){
     AMap.event.addListener(map,"moveend",_onMoveend);
     AMap.event.addListener(map,"dragend",_onMoveend);
     AMap.event.addListener(map,"zoomend",_onMoveend);
     AMap.event.addListener(map,"touchend",_onMoveend);
+    AMap.event.addListener(map,"click",_onClick);
 }
 
 

@@ -16,7 +16,7 @@ if(!isset($_SESSION['name']))header("Location: login.php");
 
     <link href="css/map.css" rel='stylesheet' type='text/css' />
     <link href="css/topbar.css" rel='stylesheet' type='text/css' />
-    <link href="css/leftbar.css" rel='stylesheet' type='text/css' />
+    <link href="css/panel.css" rel='stylesheet' type='text/css' />
     <link href="css/picview.css" rel='stylesheet' type='text/css' />
     <title>PICMAP</title>
 
@@ -25,26 +25,35 @@ if(!isset($_SESSION['name']))header("Location: login.php");
 <body>
 
 <div id="Main">
+    <div id="TopBarDiv" tabindex="0">
+        <div id="NavDiv">
+            <ul id="nav"> 
+                <li><a href="javascript:nav_all_fun();">全部</a></li> 
+                <li><a href="javascript:nav_my_fun();">我的</a></li> 
+                <li><a href="javascript:nav_upload_fun();">上传</a></li> 
+                <li><a href="">求图</a></li> 
+    
+                <li><a id="Logout" href="javascript:nav_logout_fun();">注销</a></li> 
+            </ul>
+            <form id="logoutForm" method="POST" action="index.php"><input type="hidden" name="cmd" value="logout"></form>
+        </div>
+    
+    </div>
+    
+    <div id="container" tabindex="0"></div>
+</div>
 
-<div id="TopBarDiv" tabindex="0">
-    <div id="NavDiv">
-        <ul id="nav"> 
-            <li><a href="javascript:nav_all_fun();">全部</a></li> 
-            <li><a href="javascript:nav_my_fun();">我的</a></li> 
-            <li><a href="">上传</a></li> 
-            <li><a href="">求图</a></li> 
-            <li><a href="">管理</a></li> 
+<div id="PanelDiv">
 
-            <li><a id="Logout" href="javascript:nav_logout_fun();">注销</a></li> 
-        </ul>
-        <form id="logoutForm" method="POST" action="index.php"><input type="hidden" name="cmd" value="logout"></form>
+    <div id="UploadDiv">
+        <iframe id="UploadIFrame" src="upload.php"></iframe>
     </div>
 
-</div>
 
-<div id="container" tabindex="0"></div>
 
 </div>
+
+
 
 
 

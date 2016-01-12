@@ -65,6 +65,11 @@ function getPic(flag){
         userLong=0;
         userLat=0;
         if(xmlhttp.readyState==4 && xmlhttp.status==200){
+
+            for(i=0;i<picMarker.length;i++){
+                picMarker[i].setMap();
+            }
+
             res=xmlhttp.responseText;
             
             imgArr=res.split(";");

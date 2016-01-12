@@ -34,7 +34,6 @@ if($_POST['ifsubmit']=="1"){
         
         addPhoto($userid,1,1,$filename,$path,$longitude,$latitude,time(),"address",$md5,$picTag);
 
-        system("echo " . $absPath . ">>a.txt");
         header("Location: upload.php");
     
     }

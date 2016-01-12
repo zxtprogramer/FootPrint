@@ -13,9 +13,11 @@ switch($cmd){
         header("Location: login.php");
   
         break;
+
     case 'login':
         $name=$_POST['name'];
         $pwd=$_POST['pwd'];
+        echo $name,$pwd;
         if(checkPwd($name, $pwd)){
             session_start();
             $_SESSION['name']=$name;
@@ -24,10 +26,14 @@ switch($cmd){
         else{
             header("Location: login.php");
         }
-        
- 
-        
         break;
+
+    case 'logout':
+        session_start();
+        session_destroy();
+        header("Location: login.php");
+        break;
+
     default:
         header("Location: login.php");
         break;

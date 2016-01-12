@@ -54,6 +54,23 @@
                 latitude double NOT NULL DEFAULT 0)";
 
         if(!exeSQL($sql)){printf("Create User table failed\n");}
+
+        $sql="CREATE TABLE $dbName" . "_PHOTO_ALL " .
+             " (id int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                userid int unsigned NOT NULL DEFAULT 0,
+                weight int unsigned NOT NULL DEFAULT 0,
+                flag int unsigned NOT NULL DEFAULT 0,
+                filename char(255) NOT NULL DEFAULT '',
+                path char(255) NOT NULL DEFAULT '',
+                longitude double NOT NULL DEFAULT 0,
+                latitude double NOT NULL DEFAULT 0,
+                time int unsigned NOT NULL DEFAULT 0,
+                address char(255) NOT NULL DEFAULT '',
+                md5 char(255) NOT NULL DEFAULT '',
+                tag varchar(1024) NOT NULL DEFAULT '')";
+
+        if(!exeSQL($sql)){printf("Create Photo all failed\n");}
+
     }
 
     function createTable_PHOTO($id){
@@ -61,15 +78,18 @@
 
         $sql="CREATE TABLE $dbName" . "_PHOTO_" . $id .
              " (id int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                userid int unsigned NOT NULL DEFAULT 0,
+                weight int unsigned NOT NULL DEFAULT 0,
+                flag int unsigned NOT NULL DEFAULT 0,
                 filename char(255) NOT NULL DEFAULT '',
                 path char(255) NOT NULL DEFAULT '',
                 longitude double NOT NULL DEFAULT 0,
                 latitude double NOT NULL DEFAULT 0,
-                time char(255) NOT NULL DEFAULT '',
+                time int unsigned NOT NULL DEFAULT 0,
                 address char(255) NOT NULL DEFAULT '',
                 md5 char(255) NOT NULL DEFAULT '',
                 tag varchar(1024) NOT NULL DEFAULT '')";
-        exeSQL($sql);
+        if(!exeSQL($sql)){printf("Create Photo id=$id all failed\n");}
     }
 
     function addUser($name, $email, $password){
@@ -89,14 +109,16 @@
 
     }
 
-    function addPhoto($userID, $filename, $path,$longitude, $latitude, $time, $add, $md5, $tag){
+    function addPhoto($userID, $weight, $flag, $filename, $path,$longitude, $latitude, $time, $add, $md5, $tag){
         global $dbHost, $dbUser, $dbPwd, $dbName;
 
         $tabName = $dbName . "_PHOTO_$userID";
-        $sql="INSERT INTO $tabName (filename, path, longitude, latitude, time, address, md5, tag) VALUES('$filename' , '$path', '$longitude', '$latitude', '$time', '$add', '$md5', '$tag')";
+        $sql="INSERT INTO $tabName (userid, weight, flag, filename, path, longitude, latitude, time, address, md5, tag) VALUES('$userID', '$weight', '$flag', '$filename' , '$path', '$longitude', '$latitude', '$time', '$add', '$md5', '$tag')";
         exeSQL($sql);
 
-       
+        $tabName = $dbName . "_PHOTO_ALL";
+        $sql="INSERT INTO $tabName (userid, weight, flag, filename, path, longitude, latitude, time, address, md5, tag) VALUES('$userID', '$weight', '$flag', '$filename' , '$path', '$longitude', '$latitude', '$time', '$add', '$md5', '$tag')";
+        exeSQL($sql);
     }
 
     function checkRepeat($type,$data){
@@ -147,6 +169,26 @@
  
     }
 
+    function getAllPic($num, $longMin, $longMax, $latMin, $latMax){
+        global $dbHost, $dbUser, $dbPwd, $dbName;
+
+
+        $tabName=$dbName . "_PHOTO_ALL";
+        $sql="SELECT path,longitude,latitude FROM $tabName WHERE longitude>$longMin and longitude<$longMax and latitude>$latMin and latitude<$latMax order by id desc";
+        $result=exeSQL($sql);
+        $i=0;
+        $imgList="";
+        while($row=mysql_fetch_array($result)){
+            $item=$row[0] . "," . $row[1] . "," . $row[2] . ";";
+            $imgList=$imgList . $item;
+            $i=$i+1;
+            if($i>=$num)break;
+        }
+        return $imgList;
+
+    }
+
+
     function getUserPic($name, $num, $longMin, $longMax, $latMin, $latMax){
         global $dbHost, $dbUser, $dbPwd, $dbName;
 
@@ -195,7 +237,7 @@
     //echo checkUser("name","test1");
     //init();
     //addUser("zxt","zxt@pku.edu.cn","t");
-    //addPhoto("1", "c.jpg", "image/b.jpg",116, 39.9, "", "Beijing", "HELLO", "First test");
+    //addUser("zxt2","zxt2@pku.edu.cn","t2");
     //echo getUserPic("zxt",5,115.40123,117.37877,39.456,40.34);
     //addUser("zzxt","z2xt@pku.edu.cn","t2");
     //getUserPos("zxt");

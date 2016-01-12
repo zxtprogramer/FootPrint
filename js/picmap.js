@@ -46,7 +46,7 @@ function getUserPos(){
 }
 
 
-function getUserPic(){
+function getPic(flag){
 
     bounds=map.getBounds().toString();
     bArr=bounds.split(';');
@@ -56,7 +56,6 @@ function getUserPic(){
     longMax=Math.max(parseFloat(ws[0]),parseFloat(en[0]));
     latMin=Math.min(parseFloat(ws[1]),parseFloat(en[1]));
     latMax=Math.max(parseFloat(ws[1]),parseFloat(en[1]));
-    
 
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
@@ -90,7 +89,12 @@ function getUserPic(){
 
     xmlhttp.open("POST", "query.php",true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("cmd=getUserPic&num=10&longMin=" + longMin + "&longMax=" + longMax + "&latMin=" + latMin + "&latMax=" + latMax);
+    if(flag==0){
+        xmlhttp.send("cmd=getAllPic&num=10&longMin=" + longMin + "&longMax=" + longMax + "&latMin=" + latMin + "&latMax=" + latMax);
+    }
+    else{
+        xmlhttp.send("cmd=getUserPic&num=10&longMin=" + longMin + "&longMax=" + longMax + "&latMin=" + latMin + "&latMax=" + latMax);
+    }
 
 }
 
@@ -103,10 +107,10 @@ function picMakerClear(){
 
 
 
-function _onMoveend(e){ getUserPic(); }
-function _onDragend(e){ getUserPic(); }
-function _onZoomend(e){ getUserPic(); }
-function _onTouchend(e){ getUserPic(); }
+function _onMoveend(e){ getPic(picFlag); }
+function _onDragend(e){ getPic(picFlag); }
+function _onZoomend(e){ getPic(picFlag); }
+function _onTouchend(e){ getPic(picFlag); }
 
 function addListener(){
     AMap.event.addListener(map,"moveend",_onMoveend);

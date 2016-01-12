@@ -44,8 +44,9 @@ foreach($filenames as $name){
         $absSnapPath="/var/www/html/data/FP_V0_PHOTO_1/" . $name . "_snap.jpg";
         $cmd="convert -resize 100x100 " . $absPath . " " . $absSnapPath;
         system($cmd);
+        $md5=md5_file($absPath);
 
-        addPhoto("1",$name,$path,$longitude,$latitude,"time","Beijing","MD5","for test");
+        addPhoto("1",1,1,$name,$path,$longitude,$latitude,time(),"Beijing",$md5,"for test");
         
     }
 }

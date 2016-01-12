@@ -51,6 +51,15 @@ switch($cmd){
         else{echo "";}
         break;
 
+    case 'getAllPic':
+            $longMin=floatval($_POST['longMin']);
+            $longMax=floatval($_POST['longMax']);
+            $latMin=floatval($_POST['latMin']);
+            $latMax=floatval($_POST['latMax']);
+            $num=intval($_POST['num']);
+            $res=getAllPic($num,$longMin,$longMax,$latMin,$latMax);
+            echo $res;
+        break;
 
     
     default:break;

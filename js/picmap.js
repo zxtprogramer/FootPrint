@@ -6,7 +6,7 @@ var picMarker=new Array();
 function initMap(){
    map = new AMap.Map('container',{
             resizeEnable: true,
-            zoom: 10,
+            zoom: 12,
             center: [116.39,39.9]
     });
 }
@@ -64,6 +64,7 @@ function getPic(flag){
         userLat=0;
         if(xmlhttp.readyState==4 && xmlhttp.status==200){
             res=xmlhttp.responseText;
+            
             imgArr=res.split(";");
             i=0;
             for(i=0;i<imgArr.length;i++){
@@ -89,11 +90,12 @@ function getPic(flag){
 
     xmlhttp.open("POST", "query.php",true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
     if(flag==0){
-        xmlhttp.send("cmd=getAllPic&num=10&longMin=" + longMin + "&longMax=" + longMax + "&latMin=" + latMin + "&latMax=" + latMax);
+        xmlhttp.send("cmd=getAllPic&num=" + picNum + "&longMin=" + longMin + "&longMax=" + longMax + "&latMin=" + latMin + "&latMax=" + latMax);
     }
     else{
-        xmlhttp.send("cmd=getUserPic&num=10&longMin=" + longMin + "&longMax=" + longMax + "&latMin=" + latMin + "&latMax=" + latMax);
+        xmlhttp.send("cmd=getUserPic&num=" + picNum + "&longMin=" + longMin + "&longMax=" + longMax + "&latMin=" + latMin + "&latMax=" + latMax);
     }
 
 }

@@ -105,6 +105,9 @@
         $row=mysql_fetch_array($result);
         $id=$row['id'];
         createTable_PHOTO($id);
+        $dir="data/FP_V0_PHOTO_" . $id;
+        if(!file_exists($dir)){mkdir($dir);}
+
 
 
     }

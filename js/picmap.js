@@ -80,7 +80,7 @@ function getPic(flag){
                  
                 snapPath=path + "_snap.jpg";
                 infoList=[];
-                infoList.push("<div class=\"SnapMainDiv\"><div class=\"SnapImgDiv\"><img class=\"SnapImg\" src=\"" + snapPath + "\" onclick=\"javascript:showPicView('" + path + "')\"/></div></div>");
+                infoList.push("<div class=\"SnapMainDiv\"><div class=\"SnapImgDiv\"><img class=\"SnapImg\" src=\"" + snapPath + "\" onclick=\"javascript:_onClickMarker('" + path + "')\"/></div></div>");
 
 	        picMarker[i]=new AMap.Marker({position:[longitude,latitude]});
                 picMarker[i].setLabel({offset:new AMap.Pixel(20,20), content: infoList.join("<br/>")});
@@ -102,6 +102,9 @@ function getPic(flag){
 
 }
 
+
+
+
 function picMakerClear(){
     i=0;
     for(i=0;i<picMarker.length;i++){
@@ -118,6 +121,11 @@ function _onClick(e){
     $("#UploadIFrame").contents().find("#picPos").attr("value",pos );
 }
 
+
+
+function _onClickMarker(path){
+    $("#PicViewImg").attr("src",path);
+}
 
 
 function _onMoveend(e){ 

@@ -1,7 +1,7 @@
 function nav_my_fun(){
     picFlag=1;
     $("#UploadDiv").hide();
-
+    $("#PicViewDiv").show();
     $("#PanelDiv").slideToggle("slow");
 }
 
@@ -14,6 +14,7 @@ function nav_logout_fun(){
 }
 
 function nav_upload_fun(){
+    $("#PicViewDiv").hide();
     $("#UploadDiv").show();
 
     $("#PanelDiv").slideToggle("slow");

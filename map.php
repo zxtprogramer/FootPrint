@@ -17,7 +17,6 @@ if(!isset($_SESSION['name']))header("Location: login.php");
     <link href="css/map.css" rel='stylesheet' type='text/css' />
     <link href="css/topbar.css" rel='stylesheet' type='text/css' />
     <link href="css/panel.css" rel='stylesheet' type='text/css' />
-    <link href="css/picview.css" rel='stylesheet' type='text/css' />
     <title>PICMAP</title>
 
 </head>
@@ -49,22 +48,17 @@ if(!isset($_SESSION['name']))header("Location: login.php");
         <iframe id="UploadIFrame" src="upload.php"></iframe>
     </div>
 
-
-
-</div>
-
-
-
-
-
-<div id="PicView">
-    <div id="PicViewImgDiv">
+    <div id="PicViewDiv">
         <img id="PicViewImg" src=""/>
     </div>
 
-    <div id="PicViewControlDiv">
-    </div>
+
 </div>
+
+
+
+
+
 
 <div
 

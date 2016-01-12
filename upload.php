@@ -29,8 +29,8 @@ if($_POST['ifsubmit']=="1"){
         $picTag=$_POST['picTag'];
         $picPos=$_POST['picPos'];
 
-        $longitude=$picPos.split(",")[0];
-        $latitude=$picPos.split(",")[1];
+        $longitude=split(",", $picPos)[0];
+        $latitude=split(",", $picPos)[1];
         
         addPhoto($userid,1,1,$filename,$path,$longitude,$latitude,time(),"address",$md5,$picTag);
 

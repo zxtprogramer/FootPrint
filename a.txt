@@ -10,3 +10,7 @@ Tue Jan 12 22:12:25 CST 2016
 /var/www/html/data/VP_V0_PHOTO_4/QQ图片20140922051406.jpg
 /var/www/html/data/FP_V0_PHOTO_4/QQ图片20140922051406.jpg
 /var/www/html/data/FP_V0_PHOTO_1/QQ图片20140922051413.jpg
+/var/www/html/data/FP_V0_PHOTO_5/IMG20151101151402.jpg
+/var/www/html/data/FP_V0_PHOTO_5/IMG_20151005_231414.jpg
+/var/www/html/data/FP_V0_PHOTO_5/IMG20151014201654.jpg
+/var/www/html/data/FP_V0_PHOTO_5/IMG_20150721_214410.jpg

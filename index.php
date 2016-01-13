@@ -21,7 +21,8 @@ switch($cmd){
         if(checkPwd($name, $pwd)){
             session_start();
             $_SESSION['name']=$name;
-            header("Location: map.php");
+            //header("Location: map.php");
+            echo "<script type=text/javascript>window.location.href=\"map.php\";</script>";
         }
         else{
             header("Location: login.php");
